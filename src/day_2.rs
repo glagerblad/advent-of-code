@@ -3,6 +3,7 @@ enum OutComes {
     WIN = 6,
     DRAW = 3,
     LOSS = 0,
+    NONE = 99,
 }
 
 #[derive(Copy, Clone, Debug)]
@@ -14,7 +15,7 @@ enum Hand {
 }
 
 fn conversion_hand(letter: char) -> Hand {
-    return match letter {
+    match letter {
         'A' => Hand::ROCK,
         'B' => Hand::PAPER,
         'C' => Hand::SCISSOR,
@@ -22,11 +23,11 @@ fn conversion_hand(letter: char) -> Hand {
         'Y' => Hand::PAPER,
         'Z' => Hand::SCISSOR,
         _ => Hand::NONE,
-    };
+    }
 }
 
 fn who_won(game: (Hand, Hand)) -> OutComes {
-    return match game {
+    match game {
         (Hand::ROCK, Hand::ROCK) => OutComes::DRAW,
         (Hand::ROCK, Hand::PAPER) => OutComes::WIN,
         (Hand::ROCK, Hand::SCISSOR) => OutComes::LOSS,
@@ -36,8 +37,8 @@ fn who_won(game: (Hand, Hand)) -> OutComes {
         (Hand::SCISSOR, Hand::ROCK) => OutComes::WIN,
         (Hand::SCISSOR, Hand::PAPER) => OutComes::LOSS,
         (Hand::SCISSOR, Hand::SCISSOR) => OutComes::DRAW,
-        (_, _) => OutComes::DRAW,
-    };
+        (_, _) => OutComes::NONE,
+    }
 }
 
 pub fn day_two_part_one(input: &Vec<String>) -> i32 {
@@ -64,7 +65,7 @@ fn conversion_out_come(played: char) -> OutComes {
 }
 
 fn what_to_play(game: (Hand, OutComes)) -> Hand {
-    return match game {
+    match game {
         (Hand::ROCK, OutComes::WIN) => Hand::PAPER,
         (Hand::ROCK, OutComes::LOSS) => Hand::SCISSOR,
         (Hand::ROCK, OutComes::DRAW) => Hand::ROCK,
@@ -75,7 +76,7 @@ fn what_to_play(game: (Hand, OutComes)) -> Hand {
         (Hand::SCISSOR, OutComes::LOSS) => Hand::PAPER,
         (Hand::SCISSOR, OutComes::DRAW) => Hand::SCISSOR,
         (_, _) => Hand::NONE,
-    };
+    }
 }
 
 pub fn day_two_part_two(input: &Vec<String>) -> i32 {
