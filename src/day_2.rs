@@ -42,17 +42,15 @@ fn who_won(game: (Hand, Hand)) -> OutComes {
 }
 
 pub fn day_two_part_one(input: &Vec<String>) -> i32 {
-    let mut count: i32 = 0;
-    for line in input {
+    return input.iter().fold(0, |acc, line| {
         let chars: Vec<char> = line.chars().collect();
         let p1: Hand = conversion_hand(chars[0]);
         let p2: Hand = conversion_hand(chars[2]);
         let chars: Vec<char> = line.chars().collect();
         let game: OutComes = who_won((p1, p2));
         let score: i32 = game as i32 + p2 as i32;
-        count += score
-    }
-    return count;
+        acc + score
+    });
 }
 
 fn conversion_out_come(played: char) -> OutComes {
