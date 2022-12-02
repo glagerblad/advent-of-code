@@ -60,7 +60,7 @@ fn conversion_out_come(played: char) -> OutComes {
         'X' => OutComes::LOSS,
         'Y' => OutComes::DRAW,
         'Z' => OutComes::WIN,
-        _ => OutComes::DRAW,
+        _ => OutComes::NONE,
     }
 }
 
