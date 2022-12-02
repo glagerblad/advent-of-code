@@ -88,13 +88,4 @@ pub fn day_two_part_two(input: &Vec<String>) -> i32 {
         let score: i32 = hand_to_play as i32 + game_outcome as i32;
         acc + score
     });
-    // let mut count: i32 = 0;
-    // for line in input {
-    //     let chars: Vec<char> = line.chars().collect();
-    //     let p1: Hand = conversion_hand(chars[0]);
-    //     let game_outcome: OutComes = conversion_out_come(chars[2]);
-    //     let hand_to_play: Hand = what_to_play((p1, game_outcome));
-    //     let score: i32 = hand_to_play as i32 + game_outcome as i32;
-    //     count += score
-    // }
 }
