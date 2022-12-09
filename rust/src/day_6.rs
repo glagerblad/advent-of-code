@@ -4,7 +4,7 @@ fn pos_of_n_uniq_bytes(n: usize, bytes: &[u8]) -> usize {
     return n + bytes
         .windows(n)
         .enumerate()
-        .find(|(_, bytes)| bytes.into_iter().collect::<HashSet<_>>().len() == n)
+        .find(|(_, bytes)| bytes.into_iter().collect::<HashSet<&u8>>().len() == n)
         .unwrap_or_default()
         .0;
 }
